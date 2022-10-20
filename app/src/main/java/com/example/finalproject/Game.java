@@ -2,6 +2,7 @@ package com.example.finalproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -30,15 +31,17 @@ public class Game extends AppCompatActivity {
 
     private static final String m_operators = "+-*";
     private static final int m_operatorLength = 3;
-    private static final int m_maxNumberOfMultiply = 2;
+    private static final int m_maxNumberOfMultiply = 0;
     private int m_correctAnswer;
     private int m_currentScore;
     private int m_currentLevel;
-    private int m_lives;
+    private int m_currentLives;
     private Random m_rand;
 
     private TextView m_question;
     private TextView m_score;
+    private TextView m_level;
+    private TextView m_lives;
     private Button m_answerA;
     private Button m_answerB;
     private Button m_answerC;
@@ -49,18 +52,22 @@ public class Game extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-        m_lives = 3;
+        m_currentLives = 3;
         m_currentScore = 0;
         m_currentLevel = 1;
 
         m_question = (TextView)findViewById(R.id.question);
         m_score = (TextView)findViewById(R.id.gameScore);
+        m_level = (TextView)findViewById(R.id.gameLevel);
+        m_lives = (TextView)findViewById(R.id.gameLives);
         m_answerA = (Button)findViewById(R.id.answerA);
         m_answerB = (Button)findViewById(R.id.answerB);
         m_answerC = (Button)findViewById(R.id.answerC);
+        Button m_back = (Button) findViewById(R.id.gameMenu);
         m_answerA.setOnClickListener(this::answerOnClick);
         m_answerB.setOnClickListener(this::answerOnClick);
         m_answerC.setOnClickListener(this::answerOnClick);
+        m_back.setOnClickListener(this::backOnClick);
 
         setQuestion();
     }
@@ -70,7 +77,6 @@ public class Game extends AppCompatActivity {
         NodeData node = null;
         NodeData head = null;
         m_xQueue = new LinkedList<>();
-        m_currentLevel = 1;
 
         m_rand = new Random(getRandomSeed());
 
@@ -115,7 +121,8 @@ public class Game extends AppCompatActivity {
     }
 
     private char getOperator(int numberOfMultiply) {
-        return m_operators.charAt(m_rand.nextInt(numberOfMultiply < m_maxNumberOfMultiply ? m_operatorLength : m_operatorLength - 1));
+        int ind = m_rand.nextInt(numberOfMultiply < m_maxNumberOfMultiply && m_currentLevel >= 5 ? m_operatorLength : m_operatorLength - 1);
+        return m_operators.charAt(ind);
     }
 
     private int getCorrectAnswer(NodeData node) {
@@ -160,6 +167,12 @@ public class Game extends AppCompatActivity {
         m_answerC.setText(answers.get(2).toString());
     }
 
+    private void backOnClick(View view) {
+        finish();
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
     private void answerOnClick(View view) {
         int inputAnswer = 0;
         switch (view.getId()) {
@@ -174,14 +187,23 @@ public class Game extends AppCompatActivity {
                 break;
         }
         updateScore(inputAnswer);
+        updateLevel();
         setQuestion();
     }
 
     private void updateScore(int answer) {
         if (isAnswerCorrect(answer)) {
             m_currentScore++;
+        } else {
+            m_currentLives--;
+            m_lives.setText(Integer.toString(m_currentLives));
         }
         m_score.setText(Integer.toString(m_currentScore));
+    }
+
+    private void updateLevel() {
+        m_currentLevel = m_currentScore / 5 + 1;
+        m_level.setText(Integer.toString(m_currentLevel));
     }
 
     private boolean isAnswerCorrect(int answer) {

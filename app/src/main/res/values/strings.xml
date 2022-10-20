@@ -6,6 +6,8 @@
     <string name="mainPageQuitButton">Quit</string>
     <string name="questionText" />
     <string name="gameScore" >0</string>
+    <string name="gameLevel" >1</string>
+    <string name="gameLives" >3</string>
     <string name="gameAnswerA" />
     <string name="gameAnswerB" />
     <string name="gameAnswerC" />

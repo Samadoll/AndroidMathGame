@@ -6,14 +6,68 @@
     android:layout_height="match_parent"
     tools:context=".Game">
 
+    <Button
+        android:id="@+id/gameMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:insetTop="6dp"
+        android:text="Back To Menu"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/gameLevelText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/gameMenu"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="38dp"
+        android:text="Level: "
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/gameLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/gameLevelText"
+        android:layout_marginStart="38dp"
+        android:layout_toEndOf="@+id/gameLevelText"
+        android:text="@string/gameLevel"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/gameLivesText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/gameLevelText"
+        android:layout_marginStart="38dp"
+        android:text="Lives: "
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="30sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/gameLives"
+        android:id="@+id/gameLives"
+        android:layout_alignTop="@+id/gameLivesText"
+        android:layout_toEndOf="@id/gameLivesText"
+        android:layout_marginStart="38dp"
+        android:textSize="30sp" />
+
     <TextView
         android:id="@+id/gameScoreText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/gameLivesText"
         android:layout_marginStart="38dp"
-        android:layout_marginTop="38dp"
         android:text="Score: "
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="30sp" />
@@ -35,10 +89,10 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/questionText"
         android:id="@+id/question"
-        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        android:textSize="50sp" />
+        android:layout_below="@+id/gameScoreText"
+        android:layout_marginTop="70dp"
+        android:textSize="30sp" />
 
 
     <TextView
