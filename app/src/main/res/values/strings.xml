@@ -4,4 +4,9 @@
     <string name="mainPagePlayButton">Play</string>
     <string name="mainPageHighScoresButton">High Scores</string>
     <string name="mainPageQuitButton">Quit</string>
+    <string name="questionText" />
+    <string name="gameScore" >0</string>
+    <string name="gameAnswerA" />
+    <string name="gameAnswerB" />
+    <string name="gameAnswerC" />
 </resources>
