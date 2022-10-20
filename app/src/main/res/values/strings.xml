@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Final Project</string>
+    <string name="mainPageTitle">Math Game</string>
+    <string name="mainPagePlayButton">Play</string>
+    <string name="mainPageHighScoresButton">High Scores</string>
+    <string name="mainPageQuitButton">Quit</string>
 </resources>
