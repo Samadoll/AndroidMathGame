@@ -5,10 +5,15 @@
     <string name="mainPageHighScoresButton">High Scores</string>
     <string name="mainPageQuitButton">Quit</string>
     <string name="questionText" />
-    <string name="gameScore" >0</string>
-    <string name="gameLevel" >1</string>
-    <string name="gameLives" >3</string>
+    <string name="gameScore">0</string>
+    <string name="gameLevel">1</string>
+    <string name="gameLives">3</string>
     <string name="gameAnswerA" />
     <string name="gameAnswerB" />
     <string name="gameAnswerC" />
+    <string name="gameOverMain">Main Menu</string>
+    <string name="gameOverPlayAgain">Play Again</string>
+    <string name="gameOverPageTitle">Game Over</string>
+    <string name="gameOverName">Enter Your Name</string>
+    <string name="gameOverScore">0</string>
 </resources>

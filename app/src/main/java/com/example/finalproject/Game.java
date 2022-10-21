@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.time.LocalDateTime;
@@ -188,7 +189,8 @@ public class Game extends AppCompatActivity {
         }
         updateScore(inputAnswer);
         updateLevel();
-        setQuestion();
+        if (m_currentLives == 0) endGame();
+        else setQuestion();
     }
 
     private void updateScore(int answer) {
@@ -204,6 +206,13 @@ public class Game extends AppCompatActivity {
     private void updateLevel() {
         m_currentLevel = m_currentScore / 5 + 1;
         m_level.setText(Integer.toString(m_currentLevel));
+    }
+
+    private void endGame() {
+        Intent intent = new Intent(this, GameOver.class);
+        intent.putExtra("qScore", Integer.toString(m_currentScore));
+        finish();
+        startActivity(intent);
     }
 
     private boolean isAnswerCorrect(int answer) {

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GameOver">
+
+    <TextView
+        android:id="@+id/gameOverPageTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="@string/gameOverPageTitle"
+        android:textSize="50sp" />
+
+    <TextView
+        android:id="@+id/gameOverScoreText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/gameOverPageTitle"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="40dp"
+        android:text="Score: "
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="30sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/gameOverScore"
+        android:id="@+id/gameOverScore"
+        android:layout_alignTop="@+id/gameOverScoreText"
+        android:layout_toEndOf="@id/gameOverScoreText"
+        android:layout_marginStart="60dp"
+        android:textSize="30sp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/gameOverEdit"
+        android:layout_below="@+id/gameOverScoreText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:width="300dp"
+        android:textSize="20sp"
+        android:hint="@string/gameOverName"
+        android:textAlignment="center"
+        android:autofillHints=""
+        android:inputType="" />
+
+
+    <Button
+        android:id="@+id/gameOverPlayAgain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/gameOverMain"
+        android:layout_centerHorizontal="true"
+        android:text="@string/gameOverPlayAgain"
+        android:textSize="40sp"/>
+
+    <Button
+        android:id="@+id/gameOverMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:text="@string/gameOverMain"
+        android:textSize="40sp"/>
+
+</RelativeLayout>

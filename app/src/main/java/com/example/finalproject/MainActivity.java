@@ -23,11 +23,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void playOnClick(View view) {
         Intent intent = new Intent(this, Game.class);
+        finish();
         startActivity(intent);
     }
 
     private void highScoresOnClick(View view) {
         Intent intent = new Intent(this, HighScores.class);
+        finish();
         startActivity(intent);
     }
 
