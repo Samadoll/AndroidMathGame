@@ -10,11 +10,27 @@
         android:id="@+id/highScoreBack"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:insetTop="6dp"
         android:text="Back To Menu"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/highScoresTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="Highest Scores"
+        android:textSize="50sp" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/highScoresTitle"
+        android:layout_above="@+id/highScoreBack"
+        android:id="@+id/highScoreList"/>
 
 </RelativeLayout>
