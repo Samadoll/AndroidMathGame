@@ -21,7 +21,7 @@
         android:id="@+id/gameLevelText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/gameMenu"
+        android:layout_below="@+id/gameLivesText"
         android:layout_alignParentStart="true"
         android:layout_marginStart="38dp"
         android:text="Level: "
@@ -43,8 +43,8 @@
         android:id="@+id/gameLivesText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/gameMenu"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/gameLevelText"
         android:layout_marginStart="38dp"
         android:text="Lives: "
         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -66,7 +66,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/gameLivesText"
+        android:layout_below="@+id/gameLevelText"
         android:layout_marginStart="38dp"
         android:text="Score: "
         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -80,6 +80,28 @@
         android:id="@+id/gameScore"
         android:layout_alignTop="@+id/gameScoreText"
         android:layout_toEndOf="@id/gameScoreText"
+        android:layout_marginStart="30dp"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/gameTimerText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/gameScoreText"
+        android:layout_marginStart="38dp"
+        android:text="Timer: "
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="30sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/gameTimer"
+        android:id="@+id/gameTimer"
+        android:layout_alignTop="@+id/gameTimerText"
+        android:layout_toEndOf="@id/gameTimerText"
         android:layout_marginStart="30dp"
         android:textSize="30sp" />
 

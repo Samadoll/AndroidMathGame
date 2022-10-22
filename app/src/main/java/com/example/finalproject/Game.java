@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -32,16 +33,22 @@ public class Game extends AppCompatActivity {
     private static final String m_operators = "+-*";
     private static final int m_operatorLength = 3;
     private static final int m_maxNumberOfMultiply = 0;
+    private static final int m_defaultCountDown = 10;
+    private static final int m_countDownIncrement = 2;
     private int m_correctAnswer;
     private int m_currentScore;
     private int m_currentLevel;
     private int m_currentLives;
+    private int m_currentMaxCountDown;
     private Random m_rand;
+    private boolean m_countDownMode = false;
+    private CountDownTimer m_timer;
 
     private TextView m_question;
     private TextView m_score;
     private TextView m_level;
     private TextView m_lives;
+    private TextView m_gameTimer;
     private Button m_answerA;
     private Button m_answerB;
     private Button m_answerC;
@@ -55,11 +62,13 @@ public class Game extends AppCompatActivity {
         m_currentLives = 3;
         m_currentScore = 0;
         m_currentLevel = 1;
+        m_currentMaxCountDown = m_defaultCountDown;
 
         m_question = (TextView)findViewById(R.id.question);
         m_score = (TextView)findViewById(R.id.gameScore);
         m_level = (TextView)findViewById(R.id.gameLevel);
         m_lives = (TextView)findViewById(R.id.gameLives);
+        m_gameTimer = (TextView)findViewById(R.id.gameTimer);
         m_answerA = (Button)findViewById(R.id.answerA);
         m_answerB = (Button)findViewById(R.id.answerB);
         m_answerC = (Button)findViewById(R.id.answerC);
@@ -69,10 +78,39 @@ public class Game extends AppCompatActivity {
         m_answerC.setOnClickListener(this::answerOnClick);
         m_back.setOnClickListener(this::backOnClick);
 
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            m_countDownMode = extras.getBoolean("gameMode", false);
+        }
+        if (m_countDownMode) {
+            m_timer = getCountDown(m_defaultCountDown);
+        } else {
+            findViewById(R.id.gameTimerText).setVisibility(View.INVISIBLE);
+            m_gameTimer.setVisibility(View.INVISIBLE);
+        }
+
         setQuestion();
     }
 
+    private CountDownTimer getCountDown(long countDown) {
+        return new CountDownTimer(countDown * 1000, 1) {
+            @Override
+            public void onTick(long time) {
+                m_gameTimer.setText(Double.toString(time / 1000.0));
+            }
+            @Override
+            public void onFinish() {
+                m_currentLives--;
+                if (m_currentLives == 0) endGame();
+                m_lives.setText(Integer.toString(m_currentLives));
+                setQuestion();
+            }
+        };
+    }
+
+
     private void setQuestion() {
+        if (m_countDownMode) m_timer.cancel();
         int range = 100;
         NodeData node = null;
         NodeData head = null;
@@ -114,6 +152,12 @@ public class Game extends AppCompatActivity {
         assert head != null;
         m_correctAnswer = getCorrectAnswer(head);
         setViews(equation.toString());
+
+        if (m_countDownMode) {
+            m_currentMaxCountDown = m_defaultCountDown + m_countDownIncrement * (m_currentLevel - 1);
+            m_timer = getCountDown(m_currentMaxCountDown);
+            m_timer.start();
+        }
     }
 
     private int getRandomNumber(int range) {
