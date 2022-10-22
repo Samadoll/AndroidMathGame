@@ -13,46 +13,37 @@
         android:id="@+id/mainText"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        android:textSize="30sp"/>
-
-    <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:id="@+id/mainTextImage"
-        android:layout_below="@+id/mainText"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="38dp"
-        android:contentDescription="" />
+        android:layout_marginTop="150dp"
+        android:textSize="50sp"/>
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/mainPagePlayButton"
         android:id="@+id/mainPagePlay"
         android:layout_above="@+id/mainPageHighScores"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
-        android:width="150dp" />
+        android:textSize="40sp"
+        android:layout_marginBottom="10dp" />
 
     <Button
         android:id="@+id/mainPageHighScores"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/mainPageQuit"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="50dp"
-        android:text="@string/mainPageHighScoresButton"
-        android:width="150dp" />
+        android:layout_marginBottom="10dp"
+        android:textSize="40sp"
+        android:text="@string/mainPageHighScoresButton" />
 
     <Button
         android:id="@+id/mainPageQuit"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="76dp"
-        android:width="150dp"
+        android:layout_marginBottom="20dp"
+        android:textSize="40sp"
         android:text="@string/mainPageQuitButton" />
 
 </RelativeLayout>
