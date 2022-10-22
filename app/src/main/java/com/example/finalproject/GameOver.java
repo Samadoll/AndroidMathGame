@@ -54,9 +54,10 @@ public class GameOver extends AppCompatActivity {
     }
 
     private void saveScore() {
+        int mode = m_countDownMode ? 1 : 0;
         SharedPreferences preferences = getSharedPreferences("highScores", MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
-        ArrayList<String> scoresAsString = getHighScoreList(preferences);
+        ArrayList<String> scoresAsString = getHighScoreList(mode, preferences);
         String player = m_player.getText().toString();
         if (player.isEmpty()) player = m_defaultPlayer;
         String playerScore = player + " : " + m_gameScore;
@@ -75,12 +76,12 @@ public class GameOver extends AppCompatActivity {
             scoresAsString.add(playerScore);
         }
         String result = String.join(";", scoresAsString);
-        editor.putString("scores", result);
+        editor.putString("scores_" + mode, result);
         editor.apply();
     }
 
-    private ArrayList<String> getHighScoreList(SharedPreferences preferences) {
-        String highScores = preferences.getString("scores", "");
+    private ArrayList<String> getHighScoreList(int mode, SharedPreferences preferences) {
+        String highScores = preferences.getString("scores_" + mode, "");
         ArrayList<String> result = new ArrayList<>();
         if (!highScores.isEmpty()) {
             result = new ArrayList<>(Arrays.asList(highScores.split(";")));
