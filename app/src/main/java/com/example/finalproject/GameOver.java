@@ -18,6 +18,7 @@ public class GameOver extends AppCompatActivity {
     private final String m_defaultPlayer = "Anonymous";
     private EditText m_player;
     private String m_gameScore;
+    private boolean m_countDownMode = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,7 @@ public class GameOver extends AppCompatActivity {
 
         if (extras == null) return;
         m_gameScore = extras.getString("qScore");
+        m_countDownMode = extras.getBoolean("gameMode", false);
         TextView gameScore = findViewById(R.id.gameOverScore);
         gameScore.setText(m_gameScore);
     }
@@ -40,7 +42,9 @@ public class GameOver extends AppCompatActivity {
     private void playAgain(View view) {
         saveScore();
         finish();
-        startActivity(new Intent(this, Game.class));
+        Intent intent = new Intent(this, Game.class);
+        intent.putExtra("gameMode", m_countDownMode);
+        startActivity(intent);
     }
 
     private void backToMain(View view) {

@@ -254,6 +254,7 @@ public class Game extends AppCompatActivity {
     private void endGame() {
         Intent intent = new Intent(this, GameOver.class);
         intent.putExtra("qScore", Integer.toString(m_currentScore));
+        intent.putExtra("gameMode", m_countDownMode);
         finish();
         startActivity(intent);
     }

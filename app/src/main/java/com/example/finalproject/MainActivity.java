@@ -2,6 +2,7 @@ package com.example.finalproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -22,7 +23,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void playOnClick(View view) {
+        showGameModeSelection();
+    }
+
+    private void startGame(int gameMode) {
         Intent intent = new Intent(this, Game.class);
+        intent.putExtra("gameMode", gameMode == 1);
         finish();
         startActivity(intent);
     }
@@ -36,5 +42,16 @@ public class MainActivity extends AppCompatActivity {
     private void quitOnClick(View view) {
         finish();
         System.exit(0);
+    }
+
+    private void showGameModeSelection() {
+        String[] items = { "Normal", "Speed Mode", "Cancel" };
+        AlertDialog.Builder listDialog = new AlertDialog.Builder(MainActivity.this);
+        listDialog.setTitle("Game Mode");
+        listDialog.setItems(items, (dialog, which) -> {
+            if (which == 2) return;
+            startGame(which);
+        });
+        listDialog.show();
     }
 }
