@@ -32,7 +32,7 @@ public class Game extends AppCompatActivity {
 
     private static final String m_operators = "+-*";
     private static final int m_operatorLength = 3;
-    private static final int m_maxNumberOfMultiply = 0;
+    private static final int m_maxNumberOfMultiply = 2;
     private static final int m_defaultCountDown = 10;
     private static final int m_countDownIncrement = 2;
     private int m_correctAnswer;
